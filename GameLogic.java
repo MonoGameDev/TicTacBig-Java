@@ -14,4 +14,21 @@ public class GameLogic {
     public void setSymbol(Symbol player){
         symbolList.add(player);
     }
+    public void onClick(int x, int y){
+        if (getSymbol(x, y) == null){   //We check if the field is occupied
+
+            //We have to check if a Symbol is placed near the the field that the user wants to mark(left, right, up or down).
+            //If true ====> save and draw Symbol
+            if (getSymbol(x-1, y) != null || getSymbol(x+1, y) != null || getSymbol(x, y-1) != null || getSymbol(x, y+1) != null){
+                setSymbol(getSymbol(x, y));
+
+
+            }else {
+                //Nothing happens or popup will appear saying "Diagonal movement is not allowed"
+            }
+        }else {
+            //Nothing happens or popup will appear saying "Field already occupied"
+        }
+
+    }
 }
